@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Demo Socket IO</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body bgcolor="#5f9ea0">
+        <div id="do"></div>
+        <div id="xanh"></div>
+        <div id="vang"></div>
+        <script src="socket.io/socket.io.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+        <script>
+            var socket = io('http://localhost:8000');
+            socket.on('server-send-color', function (data) {
+                $('body').attr('bgcolor', data);
+            });
+            
+            $(document).ready(function () {
+                $('#do').click(function () {
+                    socket.emit('client-send-color','red');
+                });
+                $('#xanh').click(function () {
+                    socket.emit('client-send-color','blue');
+                });
+                $('#vang').click(function () {
+                    socket.emit('client-send-color','yellow');
+                });
+            });
+        </script>
+    </body>
+</html>
