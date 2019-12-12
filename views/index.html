@@ -6,7 +6,31 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <div id="wrapper">
+        <div id="login">
+            <h3>What's your name?</h3>
+            <input type="text" id="username">
+            <button id="btnRegister">Register</button>
+        </div>
+        <div id="chat">
+            <div id="left">
+                <div id="boxTitle">Users Online</div>
+                <div id="boxContent">
+                </div>
+            </div>
+            <div id="right">
+                <div id="sayHi">
+                    Hello <span id="currentUser">Chinh</span>
+                    <button id="btnLogout">Logout</button>
+                </div>
+                <div id="listMessages"></div>
+                <input type="text" name="" id="message">
+                <button id="btnSend">Send</button>
+            </div>
+        </div>
+    </div>
     <script src="socket.io/socket.io.js"></script>
-    <script src="jquery-3.4.1.min.js"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/handling.js"></script>
 </body>
 </html>

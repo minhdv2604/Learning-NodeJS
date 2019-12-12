@@ -1,0 +1,38 @@
+body {
+    background: #d7d7d7;
+}
+#right, #left {
+    min-height: 30px;
+}
+#left {
+    width: 30%;
+    float: left;
+    background-color: #d9dc18;
+}
+#right {
+    width: 70%;
+    float: right;
+    background-color: bisque;
+}
+#boxTitle {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+#boxContent {
+    border: 1px solid black;
+    border-top: none;
+    padding: 5px;
+    text-align: center;
+}
+#sayHi{
+    text-align: right;
+}
+#listMessages {
+    height: 200px;
+    background-color: #97deca;
+}
+#message {
+    margin-top: 20px;
+}
