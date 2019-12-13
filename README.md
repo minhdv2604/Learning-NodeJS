@@ -36,7 +36,7 @@
   
   + Route handlers: sử dụng 1 router gọi nhiều function
   
-   ```var cb0 = function (req, res, next) {
+    ```var cb0 = function (req, res, next) {
         console.log('CB0')
         next()
       }
@@ -51,28 +51,27 @@
         next()
       }, function (req, res) {
         res.send('Hello from D!')
-      })
-      ```
+      })```
     
  ## Middleware: có 5 loại
   + Middleware tầng ứng dụng: được sử dụng với cú pháp app.use(), ưng dụng sẽ thực hiện các chức năng trong middleware đầu tiên.
   
- ```app.use(function (req, res, next) {
-      console.log('Time:', Date.now())
-      next()
-    })
-    ```
+    ```app.use(function (req, res, next) {
+       console.log('Time:', Date.now())
+       next()
+     })
+     ```
     
   + Middleware route: được sử dụng thông qua router của express 
   
-  ```router.use('/user/:id', function (req, res, next) {
-      console.log('Request URL:', req.originalUrl)
-      next()
-    }, function (req, res, next) {
-      console.log('Request Type:', req.method)
-      next()
-    })
-    ```
+    ```router.use('/user/:id', function (req, res, next) {
+        console.log('Request URL:', req.originalUrl)
+        next()
+      }, function (req, res, next) {
+        console.log('Request Type:', req.method)
+        next()
+      })
+      ```
     
   + Middleware Error-handling: Có thêm tham số err để trả về lỗi 
   
@@ -101,16 +100,16 @@
  ## Error handling
   + Bắt lỗi: sử dụng try catch để bắt lỗi 
   
-    ```app.get('/', function (req, res, next) {
-          setTimeout(function () {
-          try {
-            throw new Error('BROKEN')
-           } catch (err) {
-             next(err)
-           }
-         }, 100)
-      })
-   ```
+     ```app.get('/', function (req, res, next) {
+           setTimeout(function () {
+           try {
+             throw new Error('BROKEN')
+            } catch (err) {
+              next(err)
+            }
+          }, 100)
+       })
+    ```
     
   + Thêm tham số err để trả về lỗi
   
