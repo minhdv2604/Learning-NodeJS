@@ -1,5 +1,5 @@
-#Demo Express + MySQL
-- ##route:
+# Demo Express + MySQL
+- ## Route:
  + Có sử dụng router methods GET
 
     app.get('/', function(req, res) {
@@ -51,7 +51,7 @@
         res.send('Hello from D!')
       })
     
-- ##Middleware: có 5 loại
+- ## Middleware: có 5 loại
   + Middleware tầng ứng dụng: được sử dụng với cú pháp app.use(), ưng dụng sẽ thực hiện các chức năng trong middleware đầu tiên.
   
     app.use(function (req, res, next) {
@@ -91,7 +91,7 @@
     // load the cookie-parsing middleware
     app.use(cookieParser())
     
-- ##Error handling
+- ## Error handling
   + Bắt lỗi: sử dụng try catch để bắt lỗi 
   
     app.get('/', function (req, res, next) {
@@ -111,7 +111,7 @@
       res.status(500).send('Something broke!')
     })
     
-- ##Template engine pug
+- ## Template engine pug
   + Các file .pug nằm trong folder views đây là mặc định của express
   + Để sử dụng pug thì phải khai báo
     
@@ -120,7 +120,7 @@
   + Pug có thể tạo layout, các file kế thừa từ file layout
   + Pug biên dịch ra html
   
-- ##Connect mysql
+- ## Connect mysql
 
     var mysql = require('mysql')
     var connection = mysql.createConnection({
