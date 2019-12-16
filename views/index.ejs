@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var Client = require('node-rest-client').Client;
+        const client = new Client();
+        console.log(client)
+        
+        // direct way
+        // client.get("http://remote.site/rest/xml/method", function (data, response) {
+        //     // parsed response body as js object
+        //     console.log(data);
+        //     // raw response
+        //     console.log(response);
+        // });
+        
+        // // registering remote methods
+        // client.registerMethod("jsonMethod", "http://remote.site/rest/json/method", "GET");
+        
+        // client.methods.jsonMethod(function (data, response) {
+        //     // parsed response body as js object
+        //     console.log(data);
+        //     // raw response
+        //     console.log(response);
+        // });
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
