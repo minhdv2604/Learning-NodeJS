@@ -1,21 +1,42 @@
 var expres = require('express');
 var app = expres();
-var server = require('http').createServer(app);
-var io = require('socket.io')(server);
 
-app.use(expres.static('public'));
-app.set('view engine', 'ejs');
+app.listen(2000);
 
-server.listen(2000);
 
-io.on('connection', function (socket) {
-    //
-});
-
+// Quá trình xử lý đồng bộ thì express sẽ tự bắt lỗi
 app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/views/index.html')
+    throw new Error('BROKEN') 
 });
 
-// app.get('/', function (req, res) {
-//    res.render('index');
-// });
+// Quá trình xử lý bất đồng bộ, ta sẽ chuyển lỗi đến middleware error handler để xử lý
+app.get('/', function (req, res, next) {
+    fs.readFile('/file-does-not-exist', function (err, data) {
+        // nếu đọc file mà có lỗi
+        if (err) {
+            // chuyển lỗi đó đến middleware error handler để xử lý
+            next(err) 
+        } else {
+            res.send(data)
+        }
+    })
+})
+
+
+// Sử dụng try catch để bắt lỗi quá trình xử lý bất đồng bộ và chuyển lỗi sang middleware error handler để xử lý
+app.get('/', function (req, res, next) {
+    setTimeout(function () {
+        try {
+            throw new Error('BROKEN')
+        } catch (err) {
+            next(err)
+        }
+    }, 100)
+})
+
+
+// middleware error handler phải được đặt ở sau cùng, dưới tất cả các app.use() khác và các route
+app.use(function (err, req, res, next) {
+    console.error(err.stack)
+    res.status(500).send('Something broke!')
+})
