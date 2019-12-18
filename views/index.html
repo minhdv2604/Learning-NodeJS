@@ -10,19 +10,28 @@
         <script src="socket.io/socket.io.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
         <script>
+            // Khai báo socket kết nối tới server có cổng 8000
             var socket = io('http://localhost:8000');
+            // lắng nghe sự kiện server-send-color từ server truyền về
             socket.on('server-send-color', function (data) {
+                // Nhận dữ liệu và thực hiện chức năng
                 $('body').attr('bgcolor', data);
             });
             
             $(document).ready(function () {
+                // Khi click vào div có id=do
                 $('#do').click(function () {
+                    // gửi lên server  sự kiện client-send-color với giá trị là red
                     socket.emit('client-send-color','red');
                 });
+                // Khi click vào div có id=xanh
                 $('#xanh').click(function () {
+                    // gửi lên server  sự kiện client-send-color với giá trị là blue
                     socket.emit('client-send-color','blue');
                 });
+                // Khi click vào div có id=vang
                 $('#vang').click(function () {
+                    // gửi lên server  sự kiện client-send-color với giá trị là yellow
                     socket.emit('client-send-color','yellow');
                 });
             });
